@@ -1,0 +1,30 @@
+﻿@model Cashier
+@{
+    ViewData["Title"] = "NewCasheir";
+    SelectList BranchListItem = new SelectList(ViewBag.Branchs,"ID","BranchName");
+}
+
+<h1>New Casheir</h1>
+<form asp-action="SaveAdd" asp-controller="Cashier" method="post">
+    <div>
+        <label asp-for="CashierName"></label>
+        <input asp-for="CashierName" class="form-control"/>
+        <div class="alert-danger">
+            <span asp-validation-for=CashierName ></span>
+        </div>
+    </div>
+     <label for="BranchId">Branch</label>
+        <select class="form-control" asp-for="BranchId" asp-items="BranchListItem">
+        </select>
+         <div class="alert-danger">
+            <span asp-validation-for=BranchId></span>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-success">Create New</button>
+    </div>
+</form>
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+

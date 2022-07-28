@@ -1,0 +1,23 @@
+﻿@model Cashier
+@{
+    ViewData["Title"] = "Edit";
+    SelectList branchList = new SelectList(ViewBag.Branchs,"Id","BranchName");
+}
+
+<h1>Edit</h1>
+<form asp-action="SaveEdit" asp-controller="Cashier" asp-route-id="@Model.Id">
+    <div>
+        <label asp-for="CashierName"></label>
+        <input asp-for="CashierName" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="BranchId"></label>
+        <input asp-for="BranchId" class="form-control" />
+    </div>
+     <div>
+        <label asp-for="BranchId"></label>
+        <select asp-for="BranchId" asp-items="branchList" ></select>
+    </div>
+    <input type="submit" class="btn btn-outline-primary" value="Submit" />
+</form>
+

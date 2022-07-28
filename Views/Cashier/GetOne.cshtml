@@ -1,0 +1,22 @@
+﻿@model Cashier
+<div>
+    <a href="/Cashier/Edit" class="btn btn-primary">Create Casheir</a>
+</div>
+<figure>Casheir Data</figure>
+<table class="table table-hover table-bordered">
+    <tr  class="text-center bg-dark" style="color:white;font-weight:600">
+           <td>ID</td>
+           <td>Branch</td>
+           <td>Casheir</td>
+           <td>Delete</td>
+           <td>Edit</td>
+       </tr>
+         
+       <tr class="text-center">
+           <td>@Model.Id</td>
+           <td>@Model.Branch.BranchName</td>
+           <td>@Model.CashierName</td>
+            <td><a href="/Cashier/Delete/@Model.Id" class="btn btn-danger">Delete</a></td>
+           <td><a href="/Cashier/Edit/@Model.Id" class="btn btn-secondary">Edit</a></td>
+       </tr>
+</table>
