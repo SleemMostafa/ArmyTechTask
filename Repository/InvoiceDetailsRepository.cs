@@ -11,6 +11,16 @@ namespace Task_Interview.Repository
         {
             this.db = db;
         }
+
+        public int Edit(int id, InvoiceDetail entity)
+        {
+            var data = GetById(id);
+            data.ItemCount = entity.ItemCount;
+            data.ItemPrice = entity.ItemPrice;
+            data.ItemName = entity.ItemName;
+            return (db.SaveChanges());
+        }
+
         public ICollection<InvoiceDetail> GetAll()
         {
             var data = db.InvoiceDetails.ToList();

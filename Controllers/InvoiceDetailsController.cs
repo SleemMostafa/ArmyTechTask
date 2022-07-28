@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Task_Interview.Models;
 using Task_Interview.Repository;
 using Task_Interview.ViewModel;
 
@@ -42,6 +43,20 @@ namespace Task_Interview.Controllers
             invoiceDetailsVM.InvoiceDate = data.InvoiceHeader.Invoicedate;
             invoiceDetailsVM.Customer = data.InvoiceHeader.CustomerName;
             return View(invoiceDetailsVM);
+        }
+        public IActionResult Edit(int id)
+        {
+            var data = repositoryInvoiceDetails.GetById(id);
+            return View(data);
+        }
+        public IActionResult SaveEdit(int id ,InvoiceDetail invoiceDetail)
+        {
+            var data = repositoryInvoiceDetails.Edit(id, invoiceDetail);
+            if(data > 0)
+            {
+                return RedirectToAction("GetOne", new { id = id });
+            }
+            return View("Edit"); 
         }
     }
 }

@@ -11,10 +11,10 @@ namespace Task_Interview.Models
         }
 
         public int Id { get; set; }
-        public string CashierName { get; set; } = null!;
+        public string CashierName { get; set; }
         public int BranchId { get; set; }
 
-        public virtual Branch Branch { get; set; } = null!;
+        public virtual Branch Branch { get; set; } 
         public virtual ICollection<InvoiceHeader> InvoiceHeaders { get; set; }
     }
 }

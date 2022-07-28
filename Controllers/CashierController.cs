@@ -31,15 +31,15 @@ namespace Task_Interview.Controllers
         }
         public IActionResult SaveAdd(Cashier newCasheir)
         {
-            if (ModelState.IsValid)
+            var rwoEffect = repositoryCashier.Insert(newCasheir);
+            if (rwoEffect > 0)
             {
-                var rwoEffect = repositoryCashier.Insert(newCasheir);
-                if (rwoEffect > 0)
-                {
-                    return RedirectToAction("index");
-                }
+                return RedirectToAction("index");
             }
-            return View(newCasheir);
+            
+            var branches = repositoryBranch.GetAll();
+            ViewData["Branchs"] = branches;
+            return View("Add",newCasheir);
         }
         public IActionResult Edit(int id)
         {
@@ -50,15 +50,12 @@ namespace Task_Interview.Controllers
         }
         public IActionResult SaveEdit(int id,Cashier newCasheir)
         {
-            if (ModelState.IsValid)
-            {
                 var rwoEffect = repositoryCashier.Edit(id,newCasheir);
                 if (rwoEffect > 0)
                 {
                     return RedirectToAction("GetOne", new {id = newCasheir.Id});
                 }
-            }
-            return View(newCasheir);
+            return View("Edit",new {id=id});
         }
         public IActionResult Delete(int id)
         {

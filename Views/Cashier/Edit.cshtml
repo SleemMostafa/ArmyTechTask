@@ -10,14 +10,14 @@
         <label asp-for="CashierName"></label>
         <input asp-for="CashierName" class="form-control" />
     </div>
-    <div>
-        <label asp-for="BranchId"></label>
-        <input asp-for="BranchId" class="form-control" />
+    <label for="BranchId">Branch</label>
+        <select class="form-control" asp-for="BranchId" asp-items="branchList">
+            <option value=0>Select Branch</option>
+        </select>
+         <div class="alert-danger">
+         <span asp-validation-for=BranchId></span>
     </div>
-     <div>
-        <label asp-for="BranchId"></label>
-        <select asp-for="BranchId" asp-items="branchList" ></select>
-    </div>
-    <input type="submit" class="btn btn-outline-primary" value="Submit" />
+    <input type="submit" class="btn btn-success mt-4" value="Submit" />
+    <a asp-controller="Cashier" asp-action="Index" class="btn btn-secondary mt-4">Cancle</a>
 </form>
 

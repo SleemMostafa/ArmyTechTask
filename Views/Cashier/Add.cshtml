@@ -1,7 +1,7 @@
 ﻿@model Cashier
 @{
     ViewData["Title"] = "NewCasheir";
-    SelectList BranchListItem = new SelectList(ViewBag.Branchs,"ID","BranchName");
+    SelectList BranchListItem = new SelectList(ViewBag.Branchs,"Id","BranchName");
 }
 
 <h1>New Casheir</h1>
@@ -15,12 +15,14 @@
     </div>
      <label for="BranchId">Branch</label>
         <select class="form-control" asp-for="BranchId" asp-items="BranchListItem">
+            <option value=0>Select Branch</option>
         </select>
          <div class="alert-danger">
-            <span asp-validation-for=BranchId></span>
+         <span asp-validation-for=BranchId></span>
     </div>
     <div class="mt-4">
         <button type="submit" class="btn btn-success">Create New</button>
+        <a asp-controller="Cashier" asp-action="Index" class="btn btn-secondary">Cancle</a>
     </div>
 </form>
 @section Scripts{

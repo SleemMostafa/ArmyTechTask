@@ -1,0 +1,31 @@
+﻿@model InvoiceDetail
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<form asp-action="SaveEdit" asp-controller="InvoiceDetails" asp-route-id="@Model.Id">
+    <div>
+        <label asp-for="InvoiceHeader.CustomerName"></label>
+        <input asp-for="InvoiceHeader.CustomerName" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="InvoiceHeader.Invoicedate"></label>
+        <input asp-for="InvoiceHeader.Invoicedate" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="ItemName"></label>
+        <input asp-for="ItemName" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="ItemCount"></label>
+        <input asp-for="ItemCount" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="ItemPrice"></label>
+        <input asp-for="ItemPrice" class="form-control" />
+    </div>
+    <input type="submit" class="btn btn-success mt-4" value="Submit" />
+    <a asp-controller="InvoiceDetails" asp-action="Index" class="btn btn-secondary mt-4">Cancle</a>
+</form>
+

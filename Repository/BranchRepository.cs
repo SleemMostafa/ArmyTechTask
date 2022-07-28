@@ -10,6 +10,12 @@ namespace Task_Interview.Repository
         {
             this.db = db;
         }
+
+        public int Edit(int id, Branch entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<Branch> GetAll()
         {
             return (db.Branches.ToList());
